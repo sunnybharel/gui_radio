@@ -1,23 +1,24 @@
 import subprocess
-from easygui import *
+import tkinter
 
 
-def channel_choice():
-    try:
-        choice = int(input("Channel number?: "))
-    except:
-        print("Incorrect channel. Integers only. Try again.")
-        channel_choice()
+def channel_1():
+    lbl.configure(text="Playing Christmas")
+    lbl.pack()
+    process = subprocess.Popen(['mplayer', 'http://178.32.62.163:8469'], stderr=subprocess.PIPE)
 
+
+def channel_2():
+    lbl.configure(text="Playing Retro Hindi")
+    lbl.pack()
+    process = subprocess.Popen(['mplayer', 'http://192.240.102.133:11454'], stderr=subprocess.PIPE)
 
 if __name__ == '__main__':
-    msg = "Choose a Channel"
-    choices = ["Radio 1", "BBC 3", "BBC 4", "Classic FM"]
-    channel = buttonbox(msg, choices=choices)
-    msgbox(channel)
-
-    process = subprocess.Popen(['mplayer', 'http://178.32.62.163:8469'],
-                               stdout=subprocess.PIPE,
-                               stderr=subprocess.PIPE,
-                               universal_newlines=True)
-    stdout, stderr = process.communicate()
+    window = tkinter.Tk()
+    window.geometry('130x200')
+    lbl = tkinter.Label(window, text="Internet Radio")
+    lbl.pack()
+    window.title("Radio")
+    button1 = tkinter.Button(text="Christmas", fg="white", bg="blue", command=channel_1).pack()
+    button2 = tkinter.Button(text="Retro Hindi", fg="white", bg="blue", command=channel_2).pack()
+    window.mainloop()
