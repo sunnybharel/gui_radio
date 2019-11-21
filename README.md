@@ -1,5 +1,5 @@
 # GUI Radio (Tkinter)
-![Image of product](link-to-image)
+![Image of product](https://github.com/sunnybharel/gui_radio/blob/master/screenshot.png)
 A GUI based python mplayer wrapper radio with preset channels
 Plays:
 - Christmas
